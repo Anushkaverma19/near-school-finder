@@ -15,33 +15,39 @@ interface MongooseCache {
 }
 
 
-const globalWithMongoose = globalThis as typeof globalThis & {
-  mongoose?: MongooseCache;
+const globalForMongoose = globalThis as unknown as {
+  mongoose: MongooseCache | undefined;
 };
 
 
 
-let cached: MongooseCache = globalWithMongoose.mongoose || {
-  conn: null,
-  promise: null,
-};
+let cached = globalForMongoose.mongoose;
 
 
 
-globalWithMongoose.mongoose = cached;
+if (!cached) {
+
+  cached = {
+    conn: null,
+    promise: null,
+  };
+
+  globalForMongoose.mongoose = cached;
+
+}
 
 
 
 async function connectDB() {
 
 
-  if (cached.conn) {
+  if (cached?.conn) {
     return cached.conn;
   }
 
 
 
-  if (!cached.promise) {
+  if (!cached?.promise) {
 
     cached.promise = mongoose.connect(MONGODB_URI);
 
