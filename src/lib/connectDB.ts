@@ -21,20 +21,12 @@ const globalForMongoose = globalThis as unknown as {
 
 
 
-let cached = globalForMongoose.mongoose;
+let cached: MongooseCache = globalForMongoose.mongoose || {
+  conn: null,
+  promise: null,
+};
+globalForMongoose.mongoose = cached;
 
-
-
-if (!cached) {
-
-  cached = {
-    conn: null,
-    promise: null,
-  };
-
-  globalForMongoose.mongoose = cached;
-
-}
 
 
 
