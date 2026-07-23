@@ -5,7 +5,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 
 if (!MONGODB_URI) {
-  throw new Error("Please add MONGODB_URI in .env");
+  throw new Error("Please add MONGODB_URI");
 }
 
 
@@ -16,30 +16,38 @@ interface MongooseCache {
 
 
 const globalForMongoose = globalThis as unknown as {
-  mongoose: MongooseCache | undefined;
+  mongoose: MongooseCache;
 };
 
 
 
-let cached: MongooseCache = globalForMongoose.mongoose || {
-  conn: null,
-  promise: null,
-};
-globalForMongoose.mongoose = cached;
+let cached = globalForMongoose.mongoose;
 
+
+
+if (!cached) {
+
+  cached = {
+    conn: null,
+    promise: null,
+  };
+
+  globalForMongoose.mongoose = cached;
+
+}
 
 
 
 async function connectDB() {
 
 
-  if (cached?.conn) {
+  if (cached.conn) {
     return cached.conn;
   }
 
 
 
-  if (!cached?.promise) {
+  if (!cached.promise) {
 
     cached.promise = mongoose.connect(MONGODB_URI);
 
