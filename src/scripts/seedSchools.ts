@@ -4,7 +4,7 @@ dotenv.config({
   path: ".env.local",
 });
 
-import connectDB from "@/lib/mongodb";
+import connectDB from "@/lib/mongoose";
 import School from "@/models/School";
 import { schools } from "@/data/schools";
 

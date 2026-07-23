@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import connectDB from "@/lib/mongodb";
+import connectDB from "@/lib/connectDB";
 import School from "@/models/School";
 
 
