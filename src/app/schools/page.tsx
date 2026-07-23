@@ -1,17 +1,28 @@
 import SchoolCard from "@/components/SchoolCard";
 
 async function getSchools(nearby: boolean) {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://near-school-finder.vercel.app";
+
   const url = nearby
-    ? "http://localhost:3000/api/schools/nearby?lat=26.8467&lng=80.9462"
-    : "http://localhost:3000/api/schools";
+    ? `${baseUrl}/api/schools/nearby?lat=26.8467&lng=80.9462`
+    : `${baseUrl}/api/schools`;
 
-  const res = await fetch(url, {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(url, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) return [];
+    if (!res.ok) {
+      console.error("Fetch failed:", res.status);
+      return [];
+    }
 
-  return res.json();
+    return await res.json();
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return [];
+  }
 }
 
 export default async function SchoolsPage({
