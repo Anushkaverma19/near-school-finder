@@ -21,7 +21,7 @@
     "framer-motion": "^12.42.2",
     "geolib": "^3.3.14",
     "leaflet": "^1.9.4",
-    "lucide-react": "^1.24.0",
+    "lucide-react": "^1.26.0",
     "mongoose": "^9.7.4",
     "next": "16.2.10",
     "next-auth": "^5.0.0-beta.31",

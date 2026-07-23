@@ -5,24 +5,20 @@ import ReviewCard from "@/components/ReviewCard";
 import AddReviewButton from "@/components/AddReviewButton";
 
 
+
 async function getSchool(id: string) {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL ||
+    "https://near-school-finder.vercel.app";
 
-  const res = await fetch(
-    `http://localhost:3000/api/schools/${id}`,
-    {
-      cache: "no-store"
-    }
-  );
-
+  const res = await fetch(`${baseUrl}/api/schools/${id}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) return null;
 
-
   return res.json();
-
 }
-
-
 
 export default async function SchoolDetailsPage({
 
