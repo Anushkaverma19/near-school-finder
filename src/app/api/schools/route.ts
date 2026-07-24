@@ -11,6 +11,7 @@ export async function POST(req: Request) {
     const session = await auth();
 
     if (!session?.user?.id) {
+      console.log("SESSION ", session);
       return NextResponse.json(
         {
           error: "Unauthorized"
@@ -25,8 +26,10 @@ export async function POST(req: Request) {
     await connectDB();
 
 
-    const body = await req.json();
 
+const body = await req.json();
+
+console.log("SCHOOL BODY ", body);
 
 
     const school = await School.create({
