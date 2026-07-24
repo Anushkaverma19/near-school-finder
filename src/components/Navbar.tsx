@@ -160,13 +160,13 @@ export default function Navbar() {
                       </Link>
 
                       <Link
-                        href="/favourites"
-                        onClick={() => setProfileOpen(false)}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-blue-50 transition"
-                      >
-                        <Heart size={18} />
-                        Favourites
-                      </Link>
+  href="/favorites"
+  onClick={() => setProfileOpen(false)}
+  className="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-blue-50 transition"
+>
+  <Heart size={18} />
+  Favourites
+</Link>
 
                       <button
                         onClick={() =>
@@ -244,14 +244,14 @@ export default function Navbar() {
                     Add School
                   </Link>
 
-                  <Link
-                    href="/favourites"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 rounded-xl p-3 hover:bg-blue-50"
-                  >
-                    <Heart size={20} />
-                    Favourites
-                  </Link>
+             <Link
+  href="/favourites"
+  onClick={() => setMobileOpen(false)}
+  className="flex items-center gap-3 rounded-xl p-3 hover:bg-blue-50"
+>
+  <Heart size={20} />
+  Favourites
+</Link>
 
                   <button
                     onClick={() =>
