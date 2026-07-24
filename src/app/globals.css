@@ -395,3 +395,48 @@ font-weight:600;
 margin-top:10px;
 
 }
+\.heart-float{
+
+position:absolute;
+font-size:18px;
+animation:heartFly .8s ease-out forwards;
+
+}
+
+
+.heart1{
+left:2px;
+}
+
+
+.heart2{
+left:18px;
+animation-delay:.1s;
+}
+
+
+.heart3{
+left:35px;
+animation-delay:.2s;
+}
+
+
+
+@keyframes heartFly{
+
+0%{
+opacity:1;
+transform:translateY(0) scale(.5);
+}
+
+100%{
+
+opacity:0;
+
+transform:
+translateY(-70px)
+scale(1.4);
+
+}
+
+}

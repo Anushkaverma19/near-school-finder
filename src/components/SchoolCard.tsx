@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
+import { useSession } from "next-auth/react";
 import {
   Heart,
   MapPin,
@@ -29,7 +29,8 @@ export default function SchoolCard({
 console.log("SCHOOL DATA 👉", school);
 
 const [liked, setLiked] = useState(false);
-
+const [heartBurst, setHeartBurst] = useState(false);
+const {data:session}=useSession();
 
 const schoolId = school._id || school.id;
 
@@ -172,10 +173,51 @@ font-semibold
 
 {/* Heart */}
 
-
 <button
 
-onClick={()=>setLiked(!liked)}
+onClick={async()=>{
+
+if(!session){
+  alert("Please login first");
+  return;
+}
+
+
+const res = await fetch("/api/favorites",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+schoolId:schoolId,
+schoolName:school.name,
+image:school.image,
+address:school.address
+
+})
+
+});
+
+if(res.ok){
+
+setLiked(!liked);
+
+setHeartBurst(true);
+
+
+setTimeout(()=>{
+
+setHeartBurst(false);
+
+},800);
+
+}
+
+}}
 
 className="
 absolute
@@ -191,18 +233,36 @@ transition
 
 >
 
+{
+heartBurst && (
+
+<div className="absolute inset-0 pointer-events-none">
+
+<span className="heart-float heart1">❤️</span>
+<span className="heart-float heart2">❤️</span>
+<span className="heart-float heart3">❤️</span>
+
+</div>
+
+)
+}
 
 <Heart
 
 size={20}
 
-className={
+className={`
+transition-all
+duration-300
+ease-in-out
+${
 liked
 ?
-"fill-red-500 text-red-500 scale-125"
+"fill-red-500 text-red-500 scale-125 animate-pulse"
 :
-"text-gray-500"
+"text-gray-500 hover:scale-110"
 }
+`}
 
 />
 
