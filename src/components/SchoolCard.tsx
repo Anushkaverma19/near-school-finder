@@ -79,18 +79,17 @@ const reviews = school.reviews?.length || 0;
 className="
 group
 bg-white
-rounded-3xl
+rounded-[35px]
 overflow-hidden
-shadow-lg
+shadow-xl
 hover:shadow-2xl
 transition-all
 duration-500
-hover:-translate-y-2
+hover:-translate-y-3
 border
 border-gray-100
 "
 >
-
 
 
 {/* IMAGE */}
@@ -98,7 +97,7 @@ border-gray-100
 
 <div className="
 relative
-h-56
+h-64
 overflow-hidden
 ">
 
@@ -119,8 +118,7 @@ overflow-hidden
 />
 
 ) : (
-
-<div className="w-full h-full bg-gray-200 flex items-center justify-center">
+<div className="w-full h-full bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
   <span className="text-gray-500">
     No Image
   </span>
@@ -259,7 +257,7 @@ font-semibold
 
 
 
-<div className="p-6">
+<div className="p-7">
 
 
 
@@ -497,8 +495,10 @@ flex
 items-center
 justify-center
 gap-2
-bg-blue-600
-hover:bg-blue-700
+bg-gradient-to-r
+from-blue-600
+to-cyan-600
+hover:scale-105
 text-white
 py-3
 rounded-xl
@@ -528,8 +528,10 @@ flex
 items-center
 justify-center
 gap-2
-bg-yellow-500
-hover:bg-yellow-600
+bg-gradient-to-r
+from-yellow-400
+to-orange-500
+hover:scale-105
 text-white
 py-3
 rounded-xl
