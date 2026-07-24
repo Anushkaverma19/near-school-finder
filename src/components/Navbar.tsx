@@ -245,7 +245,7 @@ export default function Navbar() {
                   </Link>
 
              <Link
-  href="/favourites"
+  href="/favorites"
   onClick={() => setMobileOpen(false)}
   className="flex items-center gap-3 rounded-xl p-3 hover:bg-blue-50"
 >
