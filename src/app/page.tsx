@@ -74,21 +74,21 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+<Link
+  href="/schools"
+  className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold text-blue-700 shadow-xl transition-all duration-300 hover:scale-105"
+>
+  <Search className="h-5 w-5 text-blue-700" />
 
-                <Link
-                  href="/schools"
-                  className="group flex items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold shadow-xl transition hover:scale-105 hover:bg-blue-700"
-                >
-                  <Search size={20} />
+  <span className="text-blue-700">
+    Explore Schools
+  </span>
 
-                  Explore Schools
-
-                  <ArrowRight
-                    size={18}
-                    className="transition group-hover:translate-x-1"
-                  />
-                </Link>
-
+  <ArrowRight
+    className="text-blue-700 transition-transform group-hover:translate-x-1"
+    size={18}
+  />
+</Link>
                 <Link
                   href="/add-school"
                   className="flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-lg font-semibold backdrop-blur-xl transition hover:bg-white/20"
@@ -149,8 +149,7 @@ export default function Home() {
             </div>
 
             {/* Right */}
-
-            <div className="relative hidden lg:flex justify-center">
+<div className="relative flex justify-center mt-12 lg:mt-0">
 
               <div className="absolute -top-8 -left-6 rounded-3xl bg-blue-500/20 p-6 backdrop-blur-xl border border-white/10">
 
@@ -241,48 +240,60 @@ export default function Home() {
 
       {/* CTA */}
 
-      <section className="bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600 py-24">
+      {/* CTA */}
 
-        <div className="mx-auto max-w-4xl px-6 text-center">
+<section className="bg-gradient-to-r from-blue-600 via-cyan-600 to-sky-600 py-24">
 
-          <h2 className="text-4xl font-bold md:text-5xl">
+  <div className="mx-auto max-w-4xl px-6 text-center">
 
-            Ready To Explore Schools?
+    <h2 className="text-4xl font-bold md:text-5xl">
+      Ready To Explore Schools?
+    </h2>
 
-          </h2>
+    <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">
+      Start searching thousands of schools and discover
+      the perfect education destination today.
+    </p>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100">
 
-            Start searching thousands of schools and discover
-            the perfect education destination today.
+    <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
-          </p>
+    <Link
+  href="/schools"
+  className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold shadow-xl transition-all duration-300 hover:scale-105"
+>
+  <Search className="h-5 w-5 text-blue-700" />
 
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+  <span className="text-blue-700">
+    Explore Schools
+  </span>
 
-            <Link
-              href="/schools"
-              className="rounded-full bg-white px-8 py-4 text-lg font-semibold text-blue-700 transition hover:scale-105"
-            >
-              Explore Schools
-            </Link>
+  <ArrowRight
+    className="text-blue-700 transition-transform group-hover:translate-x-1"
+    size={18}
+  />
+</Link>
 
-            <Link
-              href="/add-school"
-              className="rounded-full border border-white px-8 py-4 text-lg font-semibold text-white transition hover:bg-white hover:text-blue-700"
-            >
-              Add School
-            </Link>
 
-          </div>
+<Link
+  href="/add-school"
+  className="inline-flex items-center justify-center rounded-full border border-white px-8 py-4 text-lg font-semibold text-white transition hover:bg-white hover:text-blue-700"
+>
+  Add School
+</Link>
 
-        </div>
+    </div>
 
-      </section>
+
+  </div>
+
+</section>
+     
 
     </main>
   );
 }
+
 
 function FeatureCard({
   icon,
@@ -293,25 +304,22 @@ function FeatureCard({
   title: string;
   description: string;
 }) {
+
   return (
     <div className="group rounded-[30px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition duration-300 hover:-translate-y-3 hover:border-blue-500/40 hover:bg-white/10">
 
       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-400">
-
         {icon}
-
       </div>
 
+
       <h3 className="mt-6 text-2xl font-bold">
-
         {title}
-
       </h3>
 
+
       <p className="mt-4 leading-7 text-slate-400">
-
         {description}
-
       </p>
 
     </div>
